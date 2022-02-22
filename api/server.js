@@ -11,9 +11,11 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
+// routers plugged in 
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 
+// error handling plugged in 
 server.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
     message: err.message,
